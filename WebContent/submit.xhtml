@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+      
+<ui:composition template="template.xhtml">
+
+<ui:define name="content">
+<b:jumbotron>
+<b:container>
+    <h1>Let's get that stuff posted!</h1>
+    <p>
+    	Submit your story with a suitable title using the form below.
+    </p>
+</b:container>
+</b:jumbotron>
+<b:container>
+    <b:row>
+    	<h:form>
+        <b:column col-md="6">
+				    <h:outputText value="Username: "/>
+				    <b:inputText span="12" value="#{postBean.title}" fieldSize="lg"/>
+				    
+				    <h:outputText value="Password "/>
+				    <b:inputText span="12" value="#{postBean.url}" fieldSize="lg"/>
+			
+        </b:column>
+        <b:column col-md="6">
+        	<br></br>
+        	<b:commandButton style="height:100px" action="#{postBean.add}" value="Sign up!" look="success" icon="chevron-right" iconAlign="right"/>
+        </b:column>
+        </h:form>
+    </b:row>
+</b:container>
+</ui:define>
+
+</ui:composition>
+
+</html>

@@ -1,37 +1,40 @@
 package reddit;
 
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.List;
 
 public class PostBean {
+	public Hashtable<String, PostBean>  posts = new Hashtable<String, PostBean>();
+	
 	private UserBean user;
-	private String text;
-	private int upvotes;
-	private int downvotes;
+	private String title;
+	private String url;
+	private int votes;
 	private Date createdAt;
+	
+	public String post(){
+		this.posts.put(getTitle(), this);
+		return getTitle() + " posted!";
+	}
+	
 	public UserBean getUser() {
 		return user;
 	}
 	public void setUser(UserBean user) {
 		this.user = user;
 	}
-	public String getText() {
-		return text;
+	public String getUrl() {
+		return url;
 	}
-	public void setText(String text) {
-		this.text = text;
+	public void setUrl(String url) {
+		this.url = url;
 	}
-	public int getUpvotes() {
-		return upvotes;
+	public int upvote() {
+		return votes++;
 	}
-	public void setUpvotes(int upvotes) {
-		this.upvotes = upvotes;
-	}
-	public int getDownvotes() {
-		return downvotes;
-	}
-	public void setDownvotes(int downvotes) {
-		this.downvotes = downvotes;
+	public int downvote() {
+		return votes--;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
@@ -44,6 +47,13 @@ public class PostBean {
 	}
 	public void setComments(List<CommentBean> comments) {
 		this.comments = comments;
+	}
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	private List<CommentBean> comments;
 }

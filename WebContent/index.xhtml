@@ -2,60 +2,39 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui">
-    <h:head>
-        <title>Reddit Clone</title>
-        <meta name="author" content="Marc Juchli"></meta>
-    </h:head>
-    <!-- Add 50px padding top to the body for the navbar -->
-    <h:body style="padding-top: 50px; padding-bottom: 20px;">
-        <b:navBar brand="Reddit" brandHref="#" inverse="true" fixed="top">
-            <b:navbarLinks>
-                <b:navLink value="Submit" href="#"></b:navLink>
-                <b:navLink value="Register" href="#"></b:navLink>
-            </b:navbarLinks>
-            <h:form styleClass="navbar-form navbar-right">
-                <div class="form-group">
-                    <b:inputText placeholder="Email" fieldSize="sm"/>
-                    <!--input type="text" class="form-control" placeholder="Search"/-->
-                </div>
-                <div class="form-group">
-                    <b:inputText placeholder="Password" fieldSize="sm"/>
-                </div> 
-                #{' '}
-                <b:commandButton action="a" value="Sign in" look="success" icon="chevron-right" iconAlign="right"/>
-            </h:form>
-        </b:navBar>
-        <b:jumbotron>
-            <b:container>
-                <h1>Hello, welcome to my Reddit Clone!</h1>
-                <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. 
-                   Use it as a starting point to create something more unique.
-                </p>
-                <p>
-                    <a href="https://github.com/TheCoder4eu/BootsFacesWeb/blob/master/web/examples/jumbotron.xhtml" class="btn btn-lg btn-info">View Page Source »</a>
-                </p>
-            </b:container>
+      
+<ui:composition template="template.xhtml">
 
-        </b:jumbotron>
-        <b:container>
-            <b:row>
-            	<b:column col-md="1">
-                    up /down
-                    
-                </b:column>
-                <b:column col-md="9">
-                    <h2>Functional Reactive Programming</h2>
-                    <p>Submitted 7 hours ago by marcjuchli</p>
-                    <p><b:button outcome="" value="2 Comments"/></p>
-                </b:column>
-            </b:row>
-            <hr/>
-            <footer>
-            <p>© HSR 2014</p>
-            </footer>
-        </b:container>
+<ui:define name="content">
+<b:jumbotron>
+<b:container>
+    <h1>Hello, welcome to my Reddit Clone!</h1>
+    <p>
+    	In order to use this website in it's full scope a personal user account is required.
+    </p>
+    <p>
+        <a href="" class="btn btn-lg btn-info">Register »</a>
+    </p>
+</b:container>
 
-    </h:body>
+</b:jumbotron>
+<b:container>
+    <b:row>
+    	<b:column col-md="1">
+            up /down
+            
+        </b:column>
+        <b:column col-md="9">
+            <h2>Functional Reactive Programming</h2>
+            <p>Submitted 7 hours ago by marcjuchli</p>
+            <p><b:button outcome="" value="2 Comments"/></p>
+        </b:column>
+    </b:row>
+</b:container>
+</ui:define>
+
+</ui:composition>
+
 </html>
-
