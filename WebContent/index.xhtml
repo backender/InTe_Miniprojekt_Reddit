@@ -8,7 +8,7 @@
 <ui:composition template="template.xhtml">
 
 <ui:define name="content">
-<b:jumbotron>
+<b:jumbotron rendered="#{userBean.username == null}">
 <b:container>
     <h1>Hello, welcome to my Reddit Clone!</h1>
     <p>
@@ -22,10 +22,10 @@
 </b:jumbotron>
 <b:container>
     <b:row>
-    	<b:column col-md="1">
-            up /down
-            
+    	<b:column col-md="1" rendered="#{userBean.username != null}">
+			up /down
         </b:column>
+        <b:column col-md="1" rendered="#{userBean.username == null}"></b:column>
         <b:column col-md="9">
             <h2>Functional Reactive Programming</h2>
             <p>Submitted 7 hours ago by marcjuchli</p>

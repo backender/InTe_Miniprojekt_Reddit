@@ -21,16 +21,16 @@
     <b:row>
     	<h:form>
         <b:column col-md="6">
-				    <h:outputText value="Username: "/>
+				    <h:outputText value="Title: "/>
 				    <b:inputText span="12" value="#{postBean.title}" fieldSize="lg"/>
 				    
-				    <h:outputText value="Password "/>
+				    <h:outputText value="URL: "/>
 				    <b:inputText span="12" value="#{postBean.url}" fieldSize="lg"/>
 			
         </b:column>
         <b:column col-md="6">
         	<br></br>
-        	<b:commandButton style="height:100px" action="#{postBean.add}" value="Sign up!" look="success" icon="chevron-right" iconAlign="right"/>
+        	<b:commandButton style="height:100px" action="#{postBean.post}" value="Submit" look="success" icon="chevron-right" iconAlign="right"/>
         </b:column>
         </h:form>
     </b:row>

@@ -1,12 +1,11 @@
 package reddit;
 
 import java.util.Date;
-import java.util.Hashtable;
 import java.util.List;
 
-public class PostBean {
-	public Hashtable<String, PostBean>  posts = new Hashtable<String, PostBean>();
-	
+import javax.faces.context.FacesContext;
+
+public class PostBean {	
 	private UserBean user;
 	private String title;
 	private String url;
@@ -14,7 +13,13 @@ public class PostBean {
 	private Date createdAt;
 	
 	public String post(){
-		this.posts.put(getTitle(), this);
+		FacesContext context = FacesContext.getCurrentInstance();
+		PostListBean postList = context.getApplication().evaluateExpressionGet(context, "#{postListBean}", PostListBean.class);
+		postList.posts.add(this);
+		System.out.println(getTitle() + " posted!");
+		for(int i = 0; i < postList.posts.size(); i++){
+			System.out.println(postList.posts.get(i).getTitle());
+		}
 		return getTitle() + " posted!";
 	}
 	

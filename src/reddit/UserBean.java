@@ -1,12 +1,13 @@
 package reddit;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public class UserBean {
+public class UserBean implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
-	
 	
 	public void login(){
 		UserManager userManager = new UserManager();
@@ -20,7 +21,6 @@ public class UserBean {
 		} catch (UserException e) {
 			setUsername(null);
 			setPassword(null);
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("user " + getUsername() + " successfully logged in.");

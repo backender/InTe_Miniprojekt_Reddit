@@ -7,17 +7,22 @@
 	<managed-bean>
 		<managed-bean-name>postBean</managed-bean-name>
 		<managed-bean-class>reddit.PostBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
+		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>commentBean</managed-bean-name>
 		<managed-bean-class>reddit.CommentBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
+		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>userBean</managed-bean-name>
 		<managed-bean-class>reddit.UserBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>postListBean</managed-bean-name>
+		<managed-bean-class>reddit.PostListBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
 
 </faces-config>
