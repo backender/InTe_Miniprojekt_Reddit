@@ -20,9 +20,12 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>postListBean</managed-bean-name>
-		<managed-bean-class>reddit.PostListBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
+    <managed-bean-name>postListBean</managed-bean-name>
+      <managed-bean-class>java.util.ArrayList</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+      <list-entries>
+            <value-class>reddit.PostBean</value-class>
+      </list-entries>
 	</managed-bean>
 
 </faces-config>

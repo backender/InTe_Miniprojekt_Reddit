@@ -1,5 +1,6 @@
 package reddit;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,11 +15,11 @@ public class PostBean {
 	
 	public String post(){
 		FacesContext context = FacesContext.getCurrentInstance();
-		PostListBean postList = context.getApplication().evaluateExpressionGet(context, "#{postListBean}", PostListBean.class);
-		postList.posts.add(this);
+		ArrayList<PostBean> postList = context.getApplication().evaluateExpressionGet(context, "#{postListBean}", ArrayList.class);
+		postList.add(this);
 		System.out.println(getTitle() + " posted!");
-		for(int i = 0; i < postList.posts.size(); i++){
-			System.out.println(postList.posts.get(i).getTitle());
+		for(int i = 0; i < postList.size(); i++){
+			System.out.println(postList.get(i).getTitle());
 		}
 		return getTitle() + " posted!";
 	}
