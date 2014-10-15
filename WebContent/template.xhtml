@@ -12,7 +12,7 @@
     <h:body style="padding-top: 50px; padding-bottom: 20px;">
         <b:navBar brand="Reddit" brandHref="index.xhtml" inverse="true" fixed="top">
             <b:navbarLinks>
-                <b:navLink value="Submit" href="submit.xhtml"></b:navLink>
+                <b:navLink rendered="#{userBean.username != null}" value="Submit" href="submit.xhtml"></b:navLink>
                 <b:navLink rendered="#{userBean.username == null}" value="Register" href="register.xhtml"></b:navLink>
             </b:navbarLinks>
             <h:form styleClass="navbar-form navbar-right" rendered="#{userBean.username == null}">
