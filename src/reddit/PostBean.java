@@ -14,18 +14,29 @@ public class PostBean {
 	private int upVotes = 0;
 	private int downVotes = 0;
 	private Date createdAt = new Date();
-	private int comments = 0;
 	private FacesContext context = FacesContext.getCurrentInstance();
-	
-	
+	private List<CommentBean> comments = new ArrayList<CommentBean>();
+	ArrayList<PostBean> postList = context.getApplication().evaluateExpressionGet(context, "#{postListBean}", ArrayList.class);
+
 	public String post(){
-		ArrayList<PostBean> postList = context.getApplication().evaluateExpressionGet(context, "#{postListBean}", ArrayList.class);
 		postList.add(this);
 		System.out.println(getTitle() + " posted!");
 		for(int i = 0; i < postList.size(); i++){
 			System.out.println(postList.get(i).getTitle());
 		}
 		return "index.xhtml";
+	}
+	
+	public void comment(CommentBean c){
+		System.out.println(c);
+		System.out.println(c.getText());
+		//c.setUser();
+		comments.add(c);
+		
+		/*System.out.println(getText() + " posted!");
+		for(int i = 0; i < commentList.size(); i++){
+			System.out.println(commentList.get(i).getText());
+		}*/
 	}
 	
 	
@@ -76,16 +87,20 @@ public class PostBean {
 		this.title = title;
 	}
 
-	public int getComments() {
+	public List<CommentBean> getComments() {
 		return comments;
 	}
 
-	public void setComments(int comments) {
+	public void setComments(List<CommentBean> comments) {
 		this.comments = comments;
 	}
+
+	public boolean addComment(CommentBean comment){
+		return comments.add(comment);
+	}
 	
-	public void addComment(){
-		comments++;
+	public int getCountComments(){
+		return comments.size();
 	}
 	
 }

@@ -8,34 +8,13 @@ import javax.faces.context.FacesContext;
 
 public class CommentBean {
 
-	private PostBean post;
+//	private PostBean post;
 	private UserBean user;
 	private String text;
 	private int upVotes = 0;
 	private int downVotes = 0;
 	private Date createdAt = new Date();
-	private FacesContext context = FacesContext.getCurrentInstance();
-
-
-	public String post(){
-		ArrayList<CommentBean> commentList = context.getApplication().evaluateExpressionGet(context, "#{commentListBean}", ArrayList.class);
-		commentList.add(this);
-		getPost().addComment();
-		
-		System.out.println(getText() + " posted!");
-		for(int i = 0; i < commentList.size(); i++){
-			System.out.println(commentList.get(i).getText());
-		}
-		return "index.xhtml";
-	}
 	
-	
-	public PostBean getPost() {
-		return post;
-	}
-	public void setPost(PostBean post) {
-		this.post = post;
-	}
 	public UserBean getUser() {
 		return user;
 	}

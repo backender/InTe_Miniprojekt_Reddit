@@ -34,20 +34,34 @@
 	        <b:column col-md="9">
 	            <h2>#{post.title}</h2>
 	            <p>Submitted 7 hours ago by marcjuchli</p>
-	            <p><b:button outcome="" value="#{post.comments} Comments"/></p>
-	            <b:column col-md="10">
-	            	
+	            <p><b:button outcome="" value="#{post.countComments} Comments"/></p>
+	            <b:column col-md="12">
+	            	<ui:repeat value="#{post.comments}" var="comment">
+	            		<b:row>
 		            	<b:column col-md="2" rendered="#{userBean.username != null}">
-							#{post.upVotes} 
-							<h:form><h:commandLink action="#{post.upvote}" value="Upvote"/></h:form>
+							#{comment.upVotes} 
+							<h:form><h:commandLink action="#{comment.upvote}" value="Upvote"/></h:form>
 							/ 
-							#{post.downVotes} 
-							<h:form><h:commandLink action="#{post.downvote}" value="Downvote"/></h:form>
+							#{comment.downVotes} 
+							<h:form><h:commandLink action="#{comment.downvote}" value="Downvote"/></h:form>
 				        </b:column>
-			        
-	    			<b:column col-md="8">
-    			        test comment
-		            </b:column>
+				        <b:column col-md="10">
+    			        	#{comment.text}
+		            	</b:column>
+		            	</b:row>
+			        </ui:repeat>
+			        <b:row>
+			        <h:form>
+				        <b:column col-md="6">
+						    <h:outputText value="Write a comment "/>
+						    <h:inputTextarea style="height:100px" class="form-control" value="#{commentBean.text}"></h:inputTextarea>
+				        </b:column>
+				        <b:column col-md="6">
+				        	<br></br>
+				        	<b:commandButton style="height:100px" action="#{post.comment(commentBean)}" value="Submit" look="success" icon="chevron-right" iconAlign="right"/>
+				        </b:column>
+			        </h:form>
+			        </b:row>
 	            </b:column>
 	        </b:column>
 	    </b:row>
