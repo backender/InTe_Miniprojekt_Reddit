@@ -3,6 +3,9 @@ package reddit;
 import java.io.IOException;
 import java.io.Serializable;
 
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+
 public class UserBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -35,19 +38,20 @@ public class UserBean implements Serializable {
 		setPassword(null);
 	}
 	
-	public void register() throws IOException {
+	public String register() throws IOException {
 		try {
 			UserManager userManager = new UserManager();
 			userManager.register(this);
 			System.out.println("user " + getUsername() + " created.");
 			System.out.println("password " + getPassword());
-				
+			return "index.xhtml";
+			
 		} catch (UserException e) {
 			setUsername(null);
 			setPassword(null);
 			System.out.println("<p>At least one field is missing or incorrect.</p>");
 		}
-		
+	return "";
 	}
 	
 	public String getUsername() {

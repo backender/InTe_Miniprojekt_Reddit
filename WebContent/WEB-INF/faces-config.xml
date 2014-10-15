@@ -27,5 +27,13 @@
             <value-class>reddit.PostBean</value-class>
       </list-entries>
 	</managed-bean>
+	<managed-bean>
+	<managed-bean-name>commentListBean</managed-bean-name>
+      <managed-bean-class>java.util.ArrayList</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+      <list-entries>
+            <value-class>reddit.CommentBean</value-class>
+      </list-entries>
+	</managed-bean>
 
 </faces-config>
