@@ -17,11 +17,11 @@
             </b:navbarLinks>
             <h:form styleClass="navbar-form navbar-right" rendered="#{userBean.username == null}">
                 <div class="form-group">
-                    <b:inputText placeholder="Username" value="#{userBean.username}" fieldSize="sm"/>
+                    <b:inputText style="height:34px;" placeholder="Username" value="#{userBean.username}" fieldSize="sm"/>
                     <!--input type="text" class="form-control" placeholder="Search"/-->
                 </div>
                 <div class="form-group">
-                    <b:inputText  placeholder="Password" value="#{userBean.password}" fieldSize="sm"/>
+                    <h:inputSecret style="length:80px;" class="form-control" value="#{userBean.password}" fieldSize="sm"></h:inputSecret>
                 </div> 
                 #{' '}
                 <b:commandButton action="#{userBean.login}" value="Sign in" look="success" icon="chevron-right" iconAlign="right"/>

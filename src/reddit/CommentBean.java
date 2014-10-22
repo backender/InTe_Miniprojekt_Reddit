@@ -40,7 +40,8 @@ public class CommentBean {
 		return user;
 	}
 	public String getUserString(){
-		return user.getUsername();
+		//return user.getUsername();
+		return "";
 	}
 	public void setUser(UserBean user) {
 		this.user = user;

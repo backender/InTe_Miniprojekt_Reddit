@@ -11,6 +11,7 @@ public class UserBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
+	private String passwordAgain;
 	
 	public void login(){
 		UserManager userManager = new UserManager();
@@ -20,6 +21,7 @@ public class UserBean implements Serializable {
 			if (!(user instanceof UserBean)) {
 				setUsername(null);
 				setPassword(null);
+				setPasswordAgain(null);
 			}
 		} catch (UserException e) {
 			setUsername(null);
@@ -36,6 +38,7 @@ public class UserBean implements Serializable {
 	public void logout(){
 		setUsername(null);
 		setPassword(null);
+		setPasswordAgain(null);
 	}
 	
 	public String register() throws IOException {
@@ -49,6 +52,7 @@ public class UserBean implements Serializable {
 		} catch (UserException e) {
 			setUsername(null);
 			setPassword(null);
+			setPasswordAgain(null);
 			System.out.println("<p>At least one field is missing or incorrect.</p>");
 		}
 	return "";
@@ -79,11 +83,19 @@ public class UserBean implements Serializable {
 			return false;
 		if (username == null || username.equals(""))
 			throw new UserException();
-		if (password == null || password.equals(""))
+		if (password == null || password.equals("") || passwordAgain == null || !password.equals(passwordAgain))
 			throw new UserException();
 		if (username == null || username.equals(""))
 			throw new UserException();
 		
 		return true;
+	}
+
+	public String getPasswordAgain() {
+		return passwordAgain;
+	}
+
+	public void setPasswordAgain(String passwordAgain) {
+		this.passwordAgain = passwordAgain;
 	}
 }
