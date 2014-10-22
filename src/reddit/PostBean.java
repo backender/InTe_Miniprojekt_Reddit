@@ -2,12 +2,15 @@ package reddit;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-
 import javax.faces.context.FacesContext;
 
+
 public class PostBean {	
+	
 	private UserBean user;
 	private String title;
 	private String url;
@@ -18,6 +21,19 @@ public class PostBean {
 	private List<CommentBean> comments = new ArrayList<CommentBean>();
 	ArrayList<PostBean> postList = context.getApplication().evaluateExpressionGet(context, "#{postListBean}", ArrayList.class);
 
+	public class PostComparator implements Comparator<PostBean> {
+		@Override
+	    public int compare(PostBean o1, PostBean o2) {
+			if(o1.getUpVotes()-o1.getDownVotes() < o2.getUpVotes()-o2.getDownVotes()){
+				return 1;
+			} else if (o1.getUpVotes()-o1.getDownVotes() > o2.getUpVotes()-o2.getDownVotes()) {
+				return -1;
+			} else {
+				return 0;
+			}
+	    }
+	}
+	
 	public String post(){
 		postList.add(this);
 		System.out.println(getTitle() + " posted!");
@@ -25,6 +41,10 @@ public class PostBean {
 			System.out.println(postList.get(i).getTitle());
 		}
 		return "index.xhtml";
+	}
+	
+	public void sortPosts(){
+		Collections.sort(postList, new PostComparator());
 	}
 	
 	public void comment(CommentBean c){
@@ -60,6 +80,7 @@ public class PostBean {
 	}
 	public void upvote() {
 		upVotes++;
+		sortPosts();
 		try {
 			FacesContext.getCurrentInstance().getExternalContext()
 			.redirect("index.xhtml");
@@ -67,6 +88,7 @@ public class PostBean {
 	}
 	public void downvote() {
 		downVotes++;
+		sortPosts();
 		try {
 			FacesContext.getCurrentInstance().getExternalContext()
 			.redirect("index.xhtml");
