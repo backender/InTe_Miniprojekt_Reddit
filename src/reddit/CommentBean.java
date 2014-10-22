@@ -2,7 +2,10 @@ package reddit;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.context.FacesContext;
 
@@ -14,6 +17,23 @@ public class CommentBean {
 	private int upVotes = 0;
 	private int downVotes = 0;
 	private Date createdAt = new Date();
+	
+	public class CommentComparator implements Comparator<CommentBean> {
+		@Override
+	    public int compare(CommentBean o1, CommentBean o2) {
+			if(o1.getUpVotes()-o1.getDownVotes() < o2.getUpVotes()-o2.getDownVotes()){
+				return 1;
+			} else if (o1.getUpVotes()-o1.getDownVotes() > o2.getUpVotes()-o2.getDownVotes()) {
+				return -1;
+			} else {
+				return 0;
+			}
+	    }
+	}
+	
+	public void sortComments(List<CommentBean> comments){
+		Collections.sort(comments, new CommentComparator());
+	}
 	
 	public UserBean getUser() {
 		return user;
@@ -33,15 +53,17 @@ public class CommentBean {
 	public int getDownVotes(){
 		return downVotes;
 	}
-	public void upvote() {
+	public void upvote(PostBean post) {
 		upVotes++;
+		sortComments(post.getComments());
 		try {
 			FacesContext.getCurrentInstance().getExternalContext()
 			.redirect("index.xhtml");
 		} catch (IOException e) {}
 	}
-	public void downvote() {
+	public void downvote(PostBean post) {
 		downVotes++;
+		sortComments(post.getComments());
 		try {
 			FacesContext.getCurrentInstance().getExternalContext()
 			.redirect("index.xhtml");

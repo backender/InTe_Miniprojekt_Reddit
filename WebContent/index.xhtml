@@ -41,10 +41,10 @@
 	            		<b:row>
 		            	<b:column col-md="2" rendered="#{userBean.username != null}">
 							#{comment.upVotes} 
-							<h:form><h:commandLink action="#{comment.upvote}" value="Upvote"/></h:form>
+							<h:form><h:commandLink action="#{comment.upvote(post)}" value="Upvote"/></h:form>
 							/ 
 							#{comment.downVotes} 
-							<h:form><h:commandLink action="#{comment.downvote}" value="Downvote"/></h:form>
+							<h:form><h:commandLink action="#{comment.downvote(post)}" value="Downvote"/></h:form>
 				        </b:column>
 				        <b:column col-md="10">
 				        	<i>Submitted X hours ago by userYZ:</i><br></br>
