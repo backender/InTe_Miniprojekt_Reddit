@@ -33,7 +33,7 @@
 	        <b:column col-md="1" rendered="#{userBean.username == null}"></b:column>
 	        <b:column col-md="9">
 	            <a href="#{post.url}" target="_blank"><h2>#{post.title}</h2></a>
-	            <p><i>Submitted X hours ago by userYZ:</i></p>
+	            <p><i>Submitted #{post.createdAgo} ago by userYZ:</i></p>
 	            <p><b:button outcome="" value="#{post.countComments} Comments"/></p>
 	            <b:column col-md="12">
 	            	<ui:repeat value="#{post.comments}" var="comment">
@@ -46,7 +46,7 @@
 							<h:form><h:commandLink action="#{comment.downvote(post)}" value="Downvote"/></h:form>
 				        </b:column>
 				        <b:column col-md="10">
-				        	<i>Submitted X hours ago by userYZ:</i><br></br>
+				        	<i>Submitted #{comment.createdAgo} hours ago by userYZ:</i><br></br>
     			        	#{comment.text}
 		            	</b:column>
 		            	</b:row>

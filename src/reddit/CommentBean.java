@@ -1,6 +1,7 @@
 package reddit;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -75,6 +76,8 @@ public class CommentBean {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-	
+	public String getCreatedAgo() throws ParseException{
+		return new Timer().getTimeDiff(createdAt);
+	}
 	
 }

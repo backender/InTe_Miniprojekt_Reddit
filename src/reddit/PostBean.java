@@ -1,12 +1,16 @@
 package reddit;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+
 import javax.faces.context.FacesContext;
+import javax.print.attribute.standard.DateTimeAtCompleted;
 
 
 public class PostBean {	
@@ -102,6 +106,10 @@ public class PostBean {
 	}
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+	
+	public String getCreatedAgo() throws ParseException{
+		return new Timer().getTimeDiff(createdAt);
 	}
 	
 	public String getTitle() {
