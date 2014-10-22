@@ -78,6 +78,9 @@ public class PostBean {
 	public int getDownVotes(){
 		return downVotes;
 	}
+	public int getVotes(){
+		return upVotes-downVotes;
+	}
 	public void upvote() {
 		upVotes++;
 		sortPosts();

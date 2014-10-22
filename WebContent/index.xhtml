@@ -25,9 +25,8 @@
 	    <b:row>
 	    	<b:column col-md="1" rendered="#{userBean.username != null}">
 	    	<div style="margin-top:50px;">
-				#{post.upVotes} 
 				<h:form><h:commandLink action="#{post.upvote}" value="Upvote"/></h:form>
-				-#{post.downVotes} 
+				#{post.votes} 
 				<h:form><h:commandLink action="#{post.downvote}" value="Downvote"/></h:form>
 			</div>
 	        </b:column>
