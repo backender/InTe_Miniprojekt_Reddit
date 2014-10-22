@@ -39,6 +39,9 @@ public class CommentBean {
 	public UserBean getUser() {
 		return user;
 	}
+	public String getUserString(){
+		return user.getUsername();
+	}
 	public void setUser(UserBean user) {
 		this.user = user;
 	}

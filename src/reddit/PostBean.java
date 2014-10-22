@@ -39,6 +39,8 @@ public class PostBean {
 	}
 	
 	public String post(){
+		UserBean user = context.getApplication().evaluateExpressionGet(context, "#{userBean}", UserBean.class);
+		setUser(user);
 		postList.add(this);
 		System.out.println(getTitle() + " posted!");
 		for(int i = 0; i < postList.size(); i++){
@@ -54,7 +56,10 @@ public class PostBean {
 	public void comment(CommentBean c){
 		System.out.println(c);
 		System.out.println(c.getText());
-		//c.setUser();
+		//TODO: set user for comment
+		//UserBean user = context.getApplication().evaluateExpressionGet(context, "#{userBean}", UserBean.class);
+		//newUser.setUsername(user.getUsername());
+		//c.setUser(newUser);
 		comments.add(c);
 		
 		/*System.out.println(getText() + " posted!");
@@ -66,6 +71,9 @@ public class PostBean {
 	
 	public UserBean getUser() {
 		return user;
+	}
+	public String getUserString(){
+		return user.getUsername();
 	}
 	public void setUser(UserBean user) {
 		this.user = user;
