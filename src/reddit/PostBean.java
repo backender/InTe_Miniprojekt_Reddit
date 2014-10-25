@@ -96,18 +96,10 @@ public class PostBean {
 	public void upvote() {
 		upVotes++;
 		sortPosts();
-		try {
-			FacesContext.getCurrentInstance().getExternalContext()
-			.redirect("index.xhtml");
-		} catch (IOException e) {}
 	}
 	public void downvote() {
 		downVotes++;
 		sortPosts();
-		try {
-			FacesContext.getCurrentInstance().getExternalContext()
-			.redirect("index.xhtml");
-		} catch (IOException e) {}
 	}
 	public Date getCreatedAt() {
 		return createdAt;

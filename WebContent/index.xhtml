@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
       
 <ui:composition template="template.xhtml">
 
@@ -25,9 +26,13 @@
 	    <b:row>
 	    	<b:column col-md="1" rendered="#{userBean.username != null}">
 	    	<div style="margin-top:50px;">
-				<h:form><h:commandLink action="#{post.upvote}" value="Upvote"/></h:form>
-				#{post.votes} 
-				<h:form><h:commandLink action="#{post.downvote}" value="Downvote"/></h:form>
+	    	<h:form>
+	    	<f:ajax render="vote_count">
+				<h:commandLink action="#{post.upvote}" value="Upvote"/><br></br>
+				<h:panelGroup id="vote_count">#{post.votes}</h:panelGroup><br></br> 
+				<h:commandLink action="#{post.downvote}" value="Downvote"/><br></br>
+			</f:ajax>
+			</h:form>
 			</div>
 	        </b:column>
 	        <b:column col-md="1" rendered="#{userBean.username == null}"></b:column>
