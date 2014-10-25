@@ -7,6 +7,17 @@
     <h:head>
         <title>Reddit Clone</title>
         <meta name="author" content="Marc Juchli"></meta>
+        <script>
+    function toggle_visibility(id) 
+    {
+        var e = document.getElementById(id);
+        console.log("find with id " + id + ". result: "+ e);
+        if ( e.style.display == 'block' )
+            e.style.display = 'none';
+        else
+            e.style.display = 'block';
+    }
+</script>
     </h:head>
     <!-- Add 50px padding top to the body for the navbar -->
     <h:body style="padding-top: 50px; padding-bottom: 20px;">
@@ -29,7 +40,10 @@
             <h:form styleClass="navbar-form navbar-right" rendered="#{userBean.username != null}">
                 <b:commandButton action="#{userBean.logout}" value="Logout" look="danger" icon="chevron-right" iconAlign="right"/>
             </h:form>
-            
+            <div style="color:white;" class="navbar-right">
+            	<h:form><h:commandLink style="color:white;" action="#{localeBean.de}" value="DE"/></h:form>
+            	<h:form><h:commandLink style="color:white;" action="#{localeBean.en}" value="EN"/></h:form>
+            </div>
         </b:navBar>
         <ui:insert name="content" >
 	        <!-- content of child templates -->
